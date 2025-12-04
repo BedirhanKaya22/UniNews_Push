@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+{% block title %}Gündem | UniNews{% endblock %}
+
+{% block content %}
+
+<section class="mb-4">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <div>
+            <h1 class="h3 fw-bold mb-1">Gündem</h1>
+            <p class="text-muted small mb-0">
+                Kampüste olup biten en sıcak gelişmeler.
+            </p>
+        </div>
+        <div class="d-flex flex-wrap gap-2">
+            <button class="btn btn-uninews-soft btn-sm">Tümü</button>
+            <button class="btn btn-outline-uninews btn-sm">Son 24 Saat</button>
+            <button class="btn btn-outline-uninews btn-sm">Bu Hafta</button>
+            <button class="btn btn-outline-uninews btn-sm">Bu Ay</button>
+        </div>
+    </div>
+</section>
+
+<div class="row g-4">
+    <div class="col-lg-8">
+        <!-- Burayı Django for döngüsü ile dinamik yapabilirsin:
+        {% for article in articles %}
+            ... kart ...
+        {% empty %}
+            <p class="text-muted small">Bu kategoride henüz haber yok.</p>
+        {% endfor %}
+        -->
+
+        <!-- Örnek Gündem Kartı 1 -->
+        <article class="news-card card mb-3">
+            <div class="row g-0 align-items-center">
+                <div class="col-sm-4">
+                    <div class="news-thumb">
+                        <img src="https://images.pexels.com/photos/207691/pexels-photo-207691.jpeg"
+                             class="img-fluid h-100 object-fit-cover" alt="Kampüs">
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <span class="badge category-badge">Gündem</span>
+                            <small class="text-muted">
+                                <i class="bi bi-clock me-1"></i> 2 saat önce
+                            </small>
+                        </div>
+                        <h5 class="card-title mb-1">Kampüs Girişlerinde Yeni Güvenlik Uygulaması</h5>
+                        <p class="card-text small text-muted mb-2">
+                            Kart okuyucu turnikeler yenilendi, giriş çıkışlar artık mobil uygulama ile de yapılabilecek...
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center small">
+                            <div class="d-flex align-items-center gap-2">
+                                <span><i class="bi bi-eye me-1"></i> 1.5K</span>
+                                <span><i class="bi bi-heart me-1"></i> 102</span>
+                            </div>
+                            <a href="#" class="stretched-link text-decoration-none fw-semibold read-more">
+                                Devamını oku <i class="bi bi-arrow-right-short"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Örnek Gündem Kartı 2 -->
+        <article class="news-card card mb-3">
+            <div class="row g-0 align-items-center">
+                <div class="col-sm-4">
+                    <div class="news-thumb">
+                        <img src="https://images.pexels.com/photos/256490/pexels-photo-256490.jpeg"
+                             class="img-fluid h-100 object-fit-cover" alt="Gündem">
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <span class="badge category-badge">Gündem</span>
+                            <small class="text-muted">
+                                <i class="bi bi-calendar-event me-1"></i> 3 Nisan 2025
+                            </small>
+                        </div>
+                        <h5 class="card-title mb-1">Yeni Yemekhane Menü Sistemi Teste Başladı</h5>
+                        <p class="card-text small text-muted mb-2">
+                            Öğrenciler artık yemek menülerini mobil uygulama üzerinden oylayabilecek ve geri bildirim verebilecek...
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center small">
+                            <div class="d-flex align-items-center gap-2">
+                                <span><i class="bi bi-eye me-1"></i> 780</span>
+                                <span><i class="bi bi-heart me-1"></i> 41</span>
+                            </div>
+                            <a href="#" class="stretched-link text-decoration-none fw-semibold read-more">
+                                Devamını oku <i class="bi bi-arrow-right-short"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Sayfalama -->
+        <nav aria-label="Sayfalama" class="mt-4">
+            <ul class="pagination pagination-sm justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Önceki</a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Sonraki</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Sağ sidebar (aynı tasarım) -->
+    <div class="col-lg-4">
+        <div class="card mb-4 sidebar-card">
+            <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center">
+                <h6 class="mb-0 fw-bold">En Çok Okunan Gündem</h6>
+                <i class="bi bi-graph-up-arrow text-orange"></i>
+            </div>
+            <div class="list-group list-group-flush small">
+                <a href="#" class="list-group-item list-group-item-action">
+                    Rektör Öğrencilerle Buluştu
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                    Kütüphane Çalışma Saatleri Değişti
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                    Kampüs İçi Ulaşım Hattı Genişletildi
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
